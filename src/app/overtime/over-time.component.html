@@ -1,0 +1,17 @@
+<div>
+    <h1>Overtime Calculator</h1>
+    <h2>Arrival Time</h2>
+    <input type="text" placeholder="Hours" id="arrivalHours" [(ngModel)]="arrivalHour" />
+    <span>:</span>
+    <input type="text" placeholder="Minutes" id="arrivalMinutes" [(ngModel)]="arrivalMinute" />
+    <h2>Leave Time</h2>
+    <input type="text" placeholder="Hours" id="leaveHours" [(ngModel)]="leaveHour" />
+    <span>:</span>
+    <input type="text" placeholder="Minutes" id="leaveMinutes" [(ngModel)]="leaveMinute" />
+    <button (click)="setNow()">Now</button>
+    <br>
+    <input type="button" (click)="calculateOvertimeTime()" value="Calculate" />
+    <div>
+        <span id="minResult">{{overtimeTime}}</span>
+    </div>
+</div>

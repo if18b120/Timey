@@ -25,6 +25,7 @@
     "@angular-devkit/build-angular": "^18.0.2",
     "@angular/cli": "^18.0.2",
     "@angular/compiler-cli": "^18.0.0",
+    "electron": "^33.2.0",
     "typescript": "~5.4.2"
   }
 }

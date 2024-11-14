@@ -1,0 +1,14 @@
+<div>
+    <h1>Time Calculator</h1>
+    <h2>Arrival Time</h2>
+    <input type="text" placeholder="Hours" id="hours" [(ngModel)]="arrivalHours" />
+    <span>:</span>
+    <input type="text" placeholder="Minutes" id="minutes" [(ngModel)]="arrivalMinutes" />
+    <br>
+    <input type="button" (click)="calculateLeaveTime()" value="Calculate" />
+    <div>
+        <span id="minResult">{{leaveTimeMin}}</span>
+        <br>
+        <span id="maxResult">{{leaveTimeMax}}</span>
+    </div>
+</div>
