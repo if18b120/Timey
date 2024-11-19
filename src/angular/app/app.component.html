@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Time Calculator</h1>
+    <span>Arrival:</span>
+    <input type="text" placeholder="00:00" [(ngModel)]="arrivalString.value" (blur)="formatAndCalculate(arrivalString, arrivalTime)" (click)="selectText($event)" />
+    <br>
+    <span>Leave:</span>
+    <input type="text" placeholder="00:00" [(ngModel)]="leaveString.value" (blur)="formatAndCalculate(leaveString, leaveTime)" (click)="selectText($event)" />
+    <button (click)="setNow()">Now</button>
+    <table>
+        <tr>
+            <td>Zero-Leave-Time:</td>
+            <td>{{leaveTimeMin}}</td>
+        </tr>
+        <tr>
+            <td>Max-Leave-Time:</td>
+            <td>{{leaveTimeMax}}</td>
+        </tr>
+        <tr>
+            <td>Overtime:</td>
+            <td>{{overtimeTime}}</td>
+        </tr>
+    </table>
+</div>

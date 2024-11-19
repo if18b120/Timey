@@ -34,29 +34,27 @@
           "skipTests": true
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "src/angular",
+      "sourceRoot": "src/angular",
       "prefix": "",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/timey",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "outputPath": "dist",
+            "index": "src/angular/index.html",
+            "browser": "src/angular/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/angular/favicon.ico",
+              "src/angular/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/angular/styles.scss"
             ],
             "scripts": []
           },

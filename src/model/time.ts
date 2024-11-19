@@ -1,39 +1,45 @@
 export class Time {
-    public static readonly ZERO: Time = new Time(0, 0);
-    public static readonly MAXIMUM: Time = new Time(10, 0);
-    public static readonly MINIMUM: Time = new Time(7, 42);
-    public static readonly BREAK: Time = new Time(0, 30);
+    public static readonly ZERO: Time = this.fromHoursAndMinutes(0, 0);
+    public static readonly MAXIMUM: Time = this.fromHoursAndMinutes(10, 0);
+    public static readonly MINIMUM: Time = this.fromHoursAndMinutes(7, 42);
+    public static readonly BREAK: Time = this.fromHoursAndMinutes(0, 30);
 
-    constructor(hours: number, minutes: number) {
-        this.hour = hours;
-        this.minute = minutes;
+    public static fromMinutes(minutes: number): Time {
+        return new Time(minutes);
     }
-    hour: number;
-    minute: number;
+
+    public static fromHoursAndMinutes(hours: number, minutes: number): Time {
+        return new Time(hours* 60 + minutes);
+    }
+
+    private constructor(minutes: number) {
+        this.internalMinutes = minutes;
+    }
+
+    private readonly internalMinutes: number;
+
+    get minutes(): number {
+        return this.internalMinutes;
+    }
+
+    get hours(): number {
+        return Math.floor(this.minutes / 60);
+    }
 
     add(time: Time): Time {
-        let newHour = this.hour + time.hour;
-        let newMinute = this.minute + time.minute;
-        if (newMinute >= 60) {
-            newHour++;
-            newMinute -= 60;
-        }
-        return new Time(newHour, newMinute);
+        return new Time(this.minutes + time.minutes);
     }
 
     subtract(time: Time): Time {
-        let newHour = this.hour - time.hour;
-        let newMinute = this.minute - time.minute;
-        if (newMinute < 0) {
-            newHour--;
-            newMinute += 60;
-        }
-        return new Time(newHour, newMinute);
+        return new Time(this.minutes - time.minutes);
     }
 
     toString(): string {
-        const formattedHour = this.hour.toString().padStart(2, '0');
-        const formattedMinute = this.minute.toString().padStart(2, '0');
+        const hour = Math.floor(this.minutes / 60);
+        const minute = Math.abs(this.minutes % 60);
+
+        const formattedHour = hour.toString().padStart(2, '0');
+        const formattedMinute = minute.toString().padStart(2, '0');
         return `${formattedHour}:${formattedMinute}`;
     }
 }

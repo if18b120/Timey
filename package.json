@@ -1,11 +1,17 @@
 {
   "name": "timey",
   "version": "0.0.0",
+  "main": "main.js",
+  "type": "module",
+  "description": "Timey",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "start:electron": "electron ./dist/main.js",
+    "build": "ng build && npm run build:electron && npm run build:after",
+    "build:electron": "tsc --project src/electron/tsconfig.json",
+    "build:after": "cp package.json dist/",
+    "package": "npm run build && electron-packager ./dist timey --overwrite --asar --platform=linux --arch=x64 --prune=true --out=out"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +31,7 @@
     "@angular-devkit/build-angular": "^18.0.2",
     "@angular/cli": "^18.0.2",
     "@angular/compiler-cli": "^18.0.0",
+    "@electron/packager": "^18.3.6",
     "electron": "^33.2.0",
     "typescript": "~5.4.2"
   }
