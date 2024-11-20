@@ -35,11 +35,19 @@ export class Time {
     }
 
     toString(): string {
-        const hour = Math.floor(this.minutes / 60);
+        let hour: number;
+        let prefix: string;
+        if (this.minutes < 0) {
+            hour = Math.abs(Math.ceil(this.minutes / 60));
+            prefix = '-';
+        } else {
+            hour = Math.floor(this.minutes / 60);
+            prefix = '';
+        }
         const minute = Math.abs(this.minutes % 60);
 
         const formattedHour = hour.toString().padStart(2, '0');
         const formattedMinute = minute.toString().padStart(2, '0');
-        return `${formattedHour}:${formattedMinute}`;
+        return `${prefix}${formattedHour}:${formattedMinute}`;
     }
 }

@@ -8,7 +8,9 @@
     "ng": "ng",
     "start": "ng serve",
     "start:electron": "electron ./dist/main.js",
-    "build": "ng build && npm run build:electron && npm run build:after",
+    "build": "npm run build:web && npm run build:electron && npm run build:after",
+    "build:web": "ng build",
+    "build:debug": "ng build --configuration=development --source-map",
     "build:electron": "tsc --project src/electron/tsconfig.json",
     "build:after": "cp package.json dist/",
     "package": "npm run build && electron-packager ./dist timey --overwrite --asar --platform=linux --arch=x64 --prune=true --out=out"

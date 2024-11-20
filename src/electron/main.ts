@@ -26,6 +26,7 @@ function createWindow() {
   );
   
   win.setMenu(null);
+  // win.webContents.openDevTools();
 }
 
 app.on('ready', createWindow);
